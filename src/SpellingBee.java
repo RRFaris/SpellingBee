@@ -60,19 +60,19 @@ public class SpellingBee {
     }
 
     public void sort() {
-        words = mergeSort(words, 0, words.size() - 1);
+        words = mergeSort(0, words.size() - 1);
     }
 
     // Does the dividing (Divide step)
-    private ArrayList<String> mergeSort(ArrayList<String> arr, int low, int high) {
+    private ArrayList<String> mergeSort(int low, int high) {
         if (high - low == 0) {
             ArrayList<String> newArr = new ArrayList<>();
-            newArr.add(arr.get(low));
+            newArr.add(words.get(low));
             return newArr;
         }
         int med = (high + low) / 2;
-        ArrayList<String> arr1 = mergeSort(arr, low, med);
-        ArrayList<String> arr2 = mergeSort(arr, med + 1, high);
+        ArrayList<String> arr1 = mergeSort(low, med);
+        ArrayList<String> arr2 = mergeSort(med + 1, high);
         return merge(arr1, arr2);
     }
 
